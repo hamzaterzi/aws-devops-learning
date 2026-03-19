@@ -8,7 +8,7 @@ Resources:
       WebsiteConfiguration:
         IndexDocument: index.html
 
-  BucketPolicy:
+BucketPolicy:
   Type: AWS::S3::BucketPolicy
   Properties:
     Bucket: !Ref MyBucket
@@ -17,7 +17,7 @@ Resources:
         - Effect: Allow
           Principal: "*"
           Action: "s3:GetObject"
-          Resource: !Sub "${MyBucket}/*"
+          Resource: !Sub "arn:aws:s3:::${MyBucket}/*"
 Outputs:
   WebsiteURL:
     Value: !GetAtt MyBucket.WebsiteURL
