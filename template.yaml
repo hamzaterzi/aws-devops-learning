@@ -4,7 +4,7 @@ Resources:
   MyBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: hamza-devops-site-984321   # bunu unique yap!
+      BucketName: hamza-devops-site-987654   # tamamen unique
       WebsiteConfiguration:
         IndexDocument: index.html
 
