@@ -1,8 +1,8 @@
-AWSTemplateFormatVersion: '2010-09-09'
 Resources:
   MyBucket:
     Type: AWS::S3::Bucket
-
-Outputs:
+    Properties:
+      BucketName: hamza-devops-bucket-unique-12345
+      Outputs:
   BucketName:
     Value: !Ref MyBucket
