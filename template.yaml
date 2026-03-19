@@ -1,8 +1,24 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
 Resources:
   MyBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: hamza-devops-bucket-unique-12345
-      Outputs:
-  BucketName:
-    Value: !Ref MyBucket
+      BucketName: hamza-devops-site-123456   # bunu unique yap!
+      WebsiteConfiguration:
+        IndexDocument: index.html
+
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref MyBucket
+      PolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal: "*"
+            Action: "s3:GetObject"
+            Resource: !Sub "${MyBucket.Arn}/*"
+
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt MyBucket.WebsiteURL
