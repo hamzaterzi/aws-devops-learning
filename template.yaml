@@ -4,21 +4,20 @@ Resources:
   MyBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: hamza-devops-site-123456   # bunu unique yap!
+      BucketName: hamza-devops-site-984321   # bunu unique yap!
       WebsiteConfiguration:
         IndexDocument: index.html
 
   BucketPolicy:
-    Type: AWS::S3::BucketPolicy
-    Properties:
-      Bucket: !Ref MyBucket
-      PolicyDocument:
-        Statement:
-          - Effect: Allow
-            Principal: "*"
-            Action: "s3:GetObject"
-            Resource: !Sub "${MyBucket.Arn}/*"
-
+  Type: AWS::S3::BucketPolicy
+  Properties:
+    Bucket: !Ref MyBucket
+    PolicyDocument:
+      Statement:
+        - Effect: Allow
+          Principal: "*"
+          Action: "s3:GetObject"
+          Resource: !Sub "${MyBucket}/*"
 Outputs:
   WebsiteURL:
     Value: !GetAtt MyBucket.WebsiteURL
